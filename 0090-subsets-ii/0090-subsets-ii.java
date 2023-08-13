@@ -10,10 +10,12 @@ class Solution {
 
     void subset( List<List<Integer>> sol, List<Integer> list, int[] nums, int start ){
 
-        if(!sol.contains(list))
+       
         sol.add(new ArrayList<>(list) );
 
         for(int i=start;i<nums.length;i++){
+             if(i > start && nums[i] == nums[i-1]) 
+             continue;
             list.add(nums[i]);
             subset(sol,list,nums,i+1);
             list.remove(list.size()-1);
