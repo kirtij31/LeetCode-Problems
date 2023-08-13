@@ -2,6 +2,7 @@ class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         int n=candidates.length;
 
+        Arrays.sort(candidates);
         List<List<Integer>> sol = new ArrayList<>();
         List<Integer> list = new ArrayList<>();
         backtrack( sol ,list,target,0,candidates);
@@ -18,6 +19,7 @@ class Solution {
           else{
               for(int i=start;i<candidates.length;i++){
                   list.add(candidates[i]);
+                  if(target>=candidates[i])
                   backtrack(sol,list,target-candidates[i],i,candidates);
                   list.remove(list.size()-1);
               }
